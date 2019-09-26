@@ -1,9 +1,8 @@
-package com.ouhl.utildemo.webservice.server.impl;
+package com.ouhl.utildemo.WebService.server.impl;
 
 
-import com.ouhl.utildemo.webservice.server.XHWebService;
+import com.ouhl.utildemo.WebService.server.XHWebService;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 /**
  * web server 实现类

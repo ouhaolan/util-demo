@@ -1,6 +1,6 @@
-package com.ouhl.utildemo.redis.controller;
+package com.ouhl.utildemo.Redis.controller;
 
-import com.ouhl.utildemo.redis.server.impl.RedisServiceImpl;
+import com.ouhl.utildemo.Redis.server.impl.RedisServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

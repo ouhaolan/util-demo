@@ -1,6 +1,6 @@
-package com.ouhl.utildemo.websocket.conf;
+package com.ouhl.utildemo.WebSocket.conf;
 
-import com.ouhl.utildemo.websocket.WebSocketConnect;
+import com.ouhl.utildemo.WebSocket.WebSocketConnect;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

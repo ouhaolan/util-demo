@@ -1,4 +1,4 @@
-package com.ouhl.utildemo.fileupload;
+package com.ouhl.utildemo.FileUpLoad;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping(value="/c/fileupload")
 public class FileUpload {
 
-    private static final String filePath="D://fileupload//";
+    private static final String filePath="D://FileUpLoad//";
 
     @PostMapping(value="upload")
     @ResponseBody

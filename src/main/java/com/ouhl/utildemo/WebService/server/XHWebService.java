@@ -1,4 +1,4 @@
-package com.ouhl.utildemo.webservice.server;
+package com.ouhl.utildemo.WebService.server;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -6,7 +6,7 @@ import javax.jws.WebService;
 /**
  * web server 类
  */
-@WebService(targetNamespace="http://server.ouhl.utildemo/",endpointInterface = "com.ouhl.utildemo.webservice.server.XHWebService")
+@WebService(targetNamespace="http://server.ouhl.utildemo",endpointInterface = "com.ouhl.utildemo.WebService.server.XHWebService")
 public interface XHWebService {
 
     @WebMethod

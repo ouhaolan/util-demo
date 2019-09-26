@@ -1,4 +1,4 @@
-package com.ouhl.utildemo.websocket.conf;
+package com.ouhl.utildemo.WebSocket.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

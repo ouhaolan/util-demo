@@ -1,7 +1,7 @@
-package com.ouhl.utildemo.webservice.conf;
+package com.ouhl.utildemo.WebService.conf;
 
 
-import com.ouhl.utildemo.webservice.server.XHWebService;
+import com.ouhl.utildemo.WebService.server.XHWebService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.transport.servlet.CXFServlet;
@@ -22,15 +22,15 @@ import javax.xml.ws.Endpoint;
 public class WebServiceConfig {
 
     @Autowired
-    private  Bus bus;
+    private Bus bus;
 
     @Autowired
     private XHWebService xhWebService;
 
     @Bean
     public ServletRegistrationBean dispatcherServlet() {
-        ///webservice 设置接口路径，可通过localhost:8080/webservice 访问到该接口
-        return new ServletRegistrationBean(new CXFServlet(), "/webservice/*");
+        ///WebService 设置接口路径，可通过localhost:8080/WebService 访问到该接口
+        return new ServletRegistrationBean(new CXFServlet(), "/WebService/*");
     }
 
     @Bean

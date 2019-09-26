@@ -1,4 +1,4 @@
-package com.ouhl.utildemo.websocket;
+package com.ouhl.utildemo.WebSocket;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
