@@ -1,18 +1,16 @@
 package com.ouhl.utildemo.QRCode.utils;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
+import com.google.zxing.*;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,4 +89,47 @@ public class QRCodeUtil {
         os.close();     //关闭流
         return "data:image/png;base64," + base64Img;
     }
+
+
+    /**
+     * 解析二维码
+     *
+     * @param image 读入的二维码图片
+     * @return
+     */
+    public static String decodeQrCode(BufferedImage image) {
+        String content = null;
+        try {
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            Binarizer binarizer = new HybridBinarizer(source);
+            BinaryBitmap binaryBitmap = new BinaryBitmap(binarizer);
+            Map<DecodeHintType, Object> hints = new HashMap<>();
+            hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
+            Result result = new MultiFormatReader().decode(binaryBitmap, hints);    // 对图像进行解码
+            content = result.getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
+
+    /**
+     * 解析二维码
+     *
+     * @param base64String 二维码Base64编码解析
+     * @return
+     */
+    public static String base64StringToImage(String base64String) {
+        BASE64Decoder decoder = new BASE64Decoder();
+        try {
+            byte[] bytes1 = decoder.decodeBuffer(base64String);
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes1);
+            BufferedImage bi1 = ImageIO.read(bais);
+            return decodeQrCode(bi1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
