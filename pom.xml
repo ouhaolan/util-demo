@@ -103,7 +103,17 @@
             <scope>runtime</scope>
         </dependency>
 
-
+        <!--poi excel操作插件-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.17</version>
+        </dependency>
     </dependencies>
 
     <build>
