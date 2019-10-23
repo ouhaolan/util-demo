@@ -1,4 +1,4 @@
-package com.ouhl.utildemo.utils;
+package com.ouhl.utildemo.Utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

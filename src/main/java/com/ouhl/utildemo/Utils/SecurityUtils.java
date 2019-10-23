@@ -1,4 +1,4 @@
-package com.ouhl.utildemo.utils;
+package com.ouhl.utildemo.Utils;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;

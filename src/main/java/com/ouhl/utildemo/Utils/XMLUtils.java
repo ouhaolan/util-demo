@@ -1,4 +1,4 @@
-package com.ouhl.utildemo.utils;
+package com.ouhl.utildemo.Utils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
