@@ -28,7 +28,7 @@ public class WebSocketConnect {
     private Session session;
 
     /**
-     * 连接成功
+     * 功能描述：连接成功
      * @param session
      */
     @OnOpen
@@ -47,7 +47,7 @@ public class WebSocketConnect {
     }
 
     /**
-     * 关闭连接
+     * 功能描述：关闭连接
      */
     @OnClose
     public void onClose() {
@@ -58,7 +58,7 @@ public class WebSocketConnect {
     }
 
     /**
-     * 接收客户端推送的消息
+     * 功能描述：接收客户端推送的消息
      * @param message
      * @param session
      */
@@ -68,7 +68,7 @@ public class WebSocketConnect {
     }
 
     /**
-     * 发生错误
+     * 功能描述：发生错误
      * @param session
      * @param error
      */
@@ -79,7 +79,7 @@ public class WebSocketConnect {
     }
 
     /**
-     * 向客户端发送消息
+     * 功能描述：向客户端发送消息
      * @param message
      * @throws IOException
      */
@@ -90,7 +90,7 @@ public class WebSocketConnect {
 
 
     /**
-     * 获取连接数
+     * 功能描述：获取连接数
      * @return
      */
     public static synchronized int getOnlineCount() {
@@ -98,7 +98,7 @@ public class WebSocketConnect {
     }
 
     /**
-     * 连接数加 1
+     * 功能描述：连接数加 1
      * @return
      */
     public static synchronized void addOnlineCount() {
@@ -106,7 +106,7 @@ public class WebSocketConnect {
     }
 
     /**
-     * 连接数减 1
+     * 功能描述：连接数减 1
      * @return
      */
     public static synchronized void subOnlineCount() {
@@ -114,7 +114,7 @@ public class WebSocketConnect {
     }
 
     /**
-     * 获取连接对象
+     * 功能描述：获取连接对象
      * @return
      */
     public static synchronized CopyOnWriteArraySet<WebSocketConnect> getWebSocketSet() {

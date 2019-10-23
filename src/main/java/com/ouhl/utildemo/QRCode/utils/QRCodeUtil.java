@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 二维码生成帮助类
+ * 功能描述：二维码帮助类
  */
 public class QRCodeUtil {
 
@@ -31,7 +31,7 @@ public class QRCodeUtil {
     }
 
     /**
-     * 返回一个 BufferedImage 对象
+     * 功能描述：返回一个 BufferedImage 对象
      *
      * @param content 二维码内容
      * @param width   宽
@@ -43,7 +43,7 @@ public class QRCodeUtil {
     }
 
     /**
-     * 将二维码图片输出到一个流中
+     * 功能描述：将二维码图片输出到一个流中
      *
      * @param content 二维码内容
      * @param stream  输出流
@@ -56,7 +56,7 @@ public class QRCodeUtil {
     }
 
     /**
-     * 生成二维码图片文件
+     * 功能描述：生成二维码图片文件
      *
      * @param content 二维码内容
      * @param path    文件保存路径
@@ -70,7 +70,7 @@ public class QRCodeUtil {
     }
 
     /**
-     * 返回一个 base64 二维码
+     * 功能描述：返回一个 base64 二维码
      *
      * @param content 二维码内容
      * @param width   宽
@@ -92,7 +92,7 @@ public class QRCodeUtil {
 
 
     /**
-     * 解析二维码
+     * 功能描述：解析二维码
      *
      * @param image 读入的二维码图片
      * @return
@@ -114,7 +114,7 @@ public class QRCodeUtil {
     }
 
     /**
-     * 解析二维码
+     * 功能描述：解析二维码
      *
      * @param base64String 二维码Base64编码解析
      * @return

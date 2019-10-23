@@ -17,10 +17,9 @@ import javax.xml.ws.Endpoint;
  *      通常是 POM 中的 parent 版本和 jaxws 版本相冲突。
  *
  * 注意：这里把Commonservice接口发布在了路径/services/CommonService下，wsdl文档路径为http://localhost:{port}/services/CommonService?wsdl
- *
- * 如果你想自定义wsdl的访问url，那么可以在application.yml中自定义：
- *  cxf:
- *   path: /services  # 替换默认的/services路径
+ *          如果想自定义wsdl的访问url，那么可以在application.yml中自定义：
+ *             cxf:
+ *                path: /services  # 替换默认的/services路径
  */
 @Configuration
 public class CxfConfig {

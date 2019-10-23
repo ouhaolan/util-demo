@@ -17,7 +17,6 @@ import javax.jws.WebService;
 @Component
 public class CommonServiceImpl implements ICommonService {
 
-
     @Override
     public String sayHello(String name) {
         return "Hello ," + name;

@@ -12,29 +12,36 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping(value="/c/fileupload")
+@RequestMapping(value = "/c/fileupload")
 public class FileUpload {
 
-    private static final String filePath="D://FileUpLoad//";
+    /*文件存放路径*/
+    private static final String filePath = "D://FileUpLoad//";
 
-    @PostMapping(value="upload")
+    /**
+     * 功能描述：文件上传
+     *
+     * @param file
+     * @return
+     */
+    @PostMapping(value = "upload")
     @ResponseBody
     public String upload(@RequestParam("file") MultipartFile file) {
         try {
-            if(file.isEmpty()) {
+            if (file.isEmpty()) {
                 return "文件为空";
             }
             String fileName = file.getOriginalFilename();//获取上传的文件名称
-            log.info("文件名称："+fileName);
+            log.info("文件名称：" + fileName);
             String suffixName = fileName.substring(fileName.lastIndexOf("."));//通过文件名截取后缀名
-            log.info("文件后缀："+suffixName);
+            log.info("文件后缀：" + suffixName);
             String path = filePath + fileName;
             File dest = new File(path);
             //检测是否存在目录结构
-            if(!dest.getParentFile().exists()) {
-                dest.getParentFile().mkdirs();		//新建文件夹
+            if (!dest.getParentFile().exists()) {
+                dest.getParentFile().mkdirs();        //新建文件夹
             }
-            file.transferTo(dest);					//文件写入
+            file.transferTo(dest);                    //文件写入
             return "上传成功";
         } catch (IllegalStateException | IOException e) {
             e.printStackTrace();
@@ -42,34 +49,41 @@ public class FileUpload {
         return "上传失败";
     }
 
-    @PostMapping(value="batch")
+    /**
+     * 功能描述：文件批量上传
+     *
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "batch")
     @ResponseBody
     public String batch(HttpServletRequest request) {
-        List<MultipartFile> files=((MultipartHttpServletRequest)request).getFiles("file");
+        List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
         MultipartFile file = null;
         BufferedOutputStream stream = null;
-        for(MultipartFile multipart : files) {
+        for (MultipartFile multipart : files) {
             file = multipart;
             if (!file.isEmpty()) {
                 try {
                     byte[] bytes = file.getBytes();
                     stream = new BufferedOutputStream(new FileOutputStream(
-                            new File(filePath + file.getOriginalFilename())));	//设置文件路径及名字
-                    stream.write(bytes);	// 写入
+                            new File(filePath + file.getOriginalFilename())));    //设置文件路径及名字
+                    stream.write(bytes);    // 写入
                     stream.close();
                 } catch (Exception e) {
                     stream = null;
-                    return file.getOriginalFilename() + " 文件上传失败 ==> "+ e.getMessage();
+                    return file.getOriginalFilename() + " 文件上传失败 ==> " + e.getMessage();
                 }
             } else {
-                return file.getOriginalFilename()+" 文件上传失败因为文件为空";
+                return file.getOriginalFilename() + " 文件上传失败因为文件为空";
             }
         }
         return "上传成功";
     }
 
     /**
-     * 文件下载
+     * 功能描述：文件下载
+     *
      * @param request
      * @param response
      * @return
@@ -77,19 +91,19 @@ public class FileUpload {
     @GetMapping("/download")
     @ResponseBody
     public String downloadFile(HttpServletRequest request, HttpServletResponse response) {
-        String fileName = "wenjian.pub";		// 需要下载的文件名
+        String fileName = "wenjian.pub";        // 需要下载的文件名
         if (fileName != null) {
-            File file = new File(filePath , fileName);
+            File file = new File(filePath, fileName);
             if (file.exists()) {
-                response.setCharacterEncoding("UTF-8");					//设置编码格式
-                response.setContentType("application/force-download");	// 设置强制下载不打开
-                response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);	// 设置文件名
+                response.setCharacterEncoding("UTF-8");                    //设置编码格式
+                response.setContentType("application/force-download");    // 设置强制下载不打开
+                response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);    // 设置文件名
                 byte[] buffer = new byte[1024];
                 FileInputStream fis = null;
                 BufferedInputStream bis = null;
                 try {
-                    fis = new FileInputStream(file);				//读
-                    bis = new BufferedInputStream(fis);				//写
+                    fis = new FileInputStream(file);                //读
+                    bis = new BufferedInputStream(fis);                //写
                     OutputStream os = response.getOutputStream();
                     int i = bis.read(buffer);
                     while (i != -1) {

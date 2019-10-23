@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * 针对 google.zxing 二维码生成包做操作封装
+ * 功能描述：针对 google.zxing 二维码生成包做操作封装
  */
 public class MatrixToImageWriter {
 
@@ -19,7 +19,7 @@ public class MatrixToImageWriter {
     private MatrixToImageWriter() {}
 
     /**
-     * 返回一个 BufferedImage 对象
+     * 功能描述：返回一个 BufferedImage 对象
      *
      * @param matrix
      * @return
@@ -36,7 +36,7 @@ public class MatrixToImageWriter {
     }
 
     /**
-     * 生成二维码图片文件
+     * 功能描述：生成二维码图片文件
      *
      * @param matrix
      * @param format
@@ -51,7 +51,7 @@ public class MatrixToImageWriter {
     }
 
     /**
-     * 将二维码图片输出到一个流中
+     * 功能描述：将二维码图片输出到一个流中
      *
      * @param matrix
      * @param format

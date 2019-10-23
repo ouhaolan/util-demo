@@ -10,14 +10,14 @@ import java.util.Date;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * 推送设置
+ * 功能描述：推送设置
  */
 @Component
 @EnableScheduling
 public class PushConfig {
 
     /**
-     * 任务调度：每分钟执行一次
+     * 功能描述：任务调度，每分钟执行一次
      */
     @Scheduled(cron = "0 * * * * ? ")
     public void test(){

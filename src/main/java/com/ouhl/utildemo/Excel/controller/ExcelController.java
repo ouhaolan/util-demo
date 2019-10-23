@@ -2,11 +2,6 @@ package com.ouhl.utildemo.Excel.controller;
 
 import com.ouhl.utildemo.Excel.Utils.ExcelUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,17 +10,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/excel")
 public class ExcelController {
-
+    /**
+     * 功能描述：excel 导出
+     *
+     * @param request
+     * @param response
+     */
     @RequestMapping("exportExcel")
     public void exportProductionTraceability(HttpServletRequest request, HttpServletResponse response) {
         String timeType = request.getParameter("name"),     //查询类型
@@ -60,7 +58,7 @@ public class ExcelController {
     }
 
     /**
-     * excel 导入
+     * 功能描述：excel 导入
      *
      * @param file  前端传递过来的文件
      */
@@ -71,7 +69,7 @@ public class ExcelController {
     }
 
     /**
-     * 发送响应流方法
+     * 功能描述：发送响应流方法（用于 excel 导出）
      *
      * @param response
      * @param fileName

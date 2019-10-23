@@ -18,7 +18,7 @@ import java.util.List;
 public class ExcelUtil {
 
     /**
-     * 导出 Excel
+     * 功能描述：导出 Excel
      *
      * @param sheetName sheet名称
      * @param title     标题
@@ -64,7 +64,7 @@ public class ExcelUtil {
     }
 
     /**
-     * 导入 Excel
+     * 功能描述：导入 Excel
      *
      * @param file
      * @return

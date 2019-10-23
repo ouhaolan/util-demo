@@ -13,10 +13,13 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+/**
+ * 功能描述：条形码帮助类
+ */
 public class BarCode {
 
     /**
-     * 条形码编码生成（针对图片文件）
+     * 功能描述：条形码编码生成（针对图片文件）
      *
      * @param contents 条形码内容
      * @param width    宽度
@@ -37,7 +40,7 @@ public class BarCode {
     }
 
     /**
-     * 条形码编码生成（针对 Base64）
+     * 功能描述：条形码编码生成（针对 Base64）
      *
      * @param contents  条形码内容
      * @param width     宽度
@@ -67,7 +70,7 @@ public class BarCode {
     }
 
     /**
-     * 条形码解码（针对图片文件）
+     * 功能描述：条形码解码（针对图片文件）
      *
      * @param imgPath 需要被解码的条形码 url
      * @return 条形码内容
@@ -91,7 +94,7 @@ public class BarCode {
     }
 
     /**
-     * 条形码解码（针对 Base64）
+     * 功能描述：条形码解码（针对 Base64）
      *
      * @param base64String  条形码 base64 字符串
      * @return              条形码内容
@@ -115,7 +118,7 @@ public class BarCode {
 
 
     /**
-     * 根据图片文件生成、解析条形码
+     * 功能描述：根据图片文件生成、解析条形码
      *
      * @param args
      */

@@ -24,7 +24,7 @@ public class QRCodeController {
     private final String url = "https://www.baidu.com";     //默认二维码路径
 
     /**
-     * 生成二维码
+     * 功能描述：生成二维码
      *
      * @return
      */
@@ -39,7 +39,7 @@ public class QRCodeController {
     }
 
     /**
-     * 解析二维码
+     * 功能描述：解析二维码
      * @param file
      */
     public void analysisCode(File file) {

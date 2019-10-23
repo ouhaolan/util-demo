@@ -6,7 +6,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
- * web socket 配置类
+ * 功能描述：web socket 配置类
  */
 @Configuration
 public class WebSocketConfig {
