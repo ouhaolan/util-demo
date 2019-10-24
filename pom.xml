@@ -61,6 +61,7 @@
             <scope>compile</scope>
         </dependency>
 
+
         <!--web service依赖 https://mvnrepository.com/artifact/org.apache.cxf/cxf-spring-boot-starter-jaxws -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -120,6 +121,14 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.17</version>
         </dependency>
+
+        <!-- google 的工厂包，用法 Lists.newArrayList()、Maps.newHashMap() 来获取单例的list和map集合-->
+        <dependency>
+            <groupId>com.google.code.google-collections</groupId>
+            <artifactId>google-collect</artifactId>
+            <version>snapshot-20080530</version>
+        </dependency>
+
     </dependencies>
 
     <build>

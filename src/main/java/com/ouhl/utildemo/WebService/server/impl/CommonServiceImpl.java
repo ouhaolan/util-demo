@@ -24,6 +24,6 @@ public class CommonServiceImpl implements ICommonService {
 
     @Override
     public User getUser(String name) {
-        return new User("","","");
+        return new User(name,0,"");
     }
 }
