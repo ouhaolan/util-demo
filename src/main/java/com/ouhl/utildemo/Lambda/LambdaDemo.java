@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * lambda 表达式用法
+ * 注释：lambda是在java8的时候推出的，常用于对集合进行数据处理
+ *      lambda 取代了又长又臭的 for 循环
+ */
 public class LambdaDemo {
 
     /* 相关资料 url：https://www.cnblogs.com/qdhxhz/p/9399015.html */
