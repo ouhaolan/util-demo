@@ -60,5 +60,18 @@ public class LambdaDemo {
         //8、集合年龄属性求和
         Integer ageAmount = persionList.stream().mapToInt(User::getAge).sum();
         System.out.println("年龄总和为: " + ageAmount);
+
+        //9、获取最大年龄
+        Integer ageMaxs = persionList.stream().mapToInt(User::getAge).max().getAsInt();
+        System.out.println("最大年龄为: " + ageMaxs);
+
+        //10、使用Lambda表达式 倒序
+        persionList.sort((a, b) ->  b.getAge() - a.getAge());
+        System.out.println("\n"+persionList);
+
+        //11、使用Lambda表达式 正序
+        persionList.sort((a, b) -> a.getAge() - b.getAge());
+        System.out.println("\n"+persionList);
+
     }
 }
