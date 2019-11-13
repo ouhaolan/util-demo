@@ -1,7 +1,9 @@
 package com.ouhl.utildemo.Excel.controller;
 
 import com.ouhl.utildemo.Excel.Utils.ExcelUtil;
+import com.ouhl.utildemo.Excel.pojo.ExcelReplaceDataVO;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,10 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.transform.Result;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/excel")
@@ -60,12 +62,35 @@ public class ExcelController {
     /**
      * 功能描述：excel 导入
      *
-     * @param file  前端传递过来的文件
+     * @param file 前端传递过来的文件
      */
     @ResponseBody
     @RequestMapping("/export")
     public List<Object> export(@RequestParam("file") MultipartFile file) {
         return ExcelUtil.getReadExport(file);
+    }
+
+    /**
+     * 功能描述：excel 上传模板、写入数据、导出报表
+     *
+     * @param file 前端传递过来的文件
+     */
+    @RequestMapping("/getReadExports")
+    public void getReadExports(@RequestParam("file") MultipartFile file, HttpServletResponse response) {
+        Map map = new HashMap();
+        List<ExcelReplaceDataVO> list = new ArrayList<>();
+        list.add(new ExcelReplaceDataVO(0, 0, "a", "b"));
+        Workbook wb = ExcelUtil.replaceModel(list, file);
+        //响应到客户端
+        try {
+            this.setResponseHeader(response, file.getOriginalFilename());
+            OutputStream os = response.getOutputStream();
+            wb.write(os);
+            os.flush();
+            os.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

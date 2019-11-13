@@ -129,6 +129,12 @@
             <version>snapshot-20080530</version>
         </dependency>
 
+        <!--使用 Apache Commons Email 发送 Email-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
 
     <build>

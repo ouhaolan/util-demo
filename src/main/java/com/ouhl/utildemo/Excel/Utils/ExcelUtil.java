@@ -1,10 +1,8 @@
 package com.ouhl.utildemo.Excel.Utils;
 
+import com.ouhl.utildemo.Excel.pojo.ExcelReplaceDataVO;
 import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -78,9 +76,9 @@ public class ExcelUtil {
             InputStream inputStream = file.getInputStream();    //excel 字节流
 
             // 2.判断 excel 文件类型，如果是xls，使用 HSSFWorkbook；如果是 xlsx，使用 XSSFWorkbook
-            if(fileName.substring(fileName.indexOf("."),fileName.length()).equals(".xls")){
+            if (fileName.substring(fileName.indexOf("."), fileName.length()).equals(".xls")) {
                 wb = new HSSFWorkbook(inputStream);
-            }else{
+            } else {
                 wb = new XSSFWorkbook(inputStream);
             }
 
@@ -101,6 +99,55 @@ public class ExcelUtil {
             e.printStackTrace();
         } finally {
             return rows;
+        }
+    }
+
+    /**
+     * 功能描述：导入 Excel
+     *
+     * @param file
+     * @return
+     */
+    public static Workbook replaceModel(List<ExcelReplaceDataVO> datas, MultipartFile file) {
+        // 1.创建workbook对象，读取整个文档
+        Workbook wb = null;                                 //excel 文件
+
+        List<Object> rows = Collections.emptyList();        //读取的excel数据
+        try {
+            String fileName = file.getOriginalFilename();                   //excel 名称
+            InputStream inputStream = file.getInputStream();    //excel 字节流
+
+            // 2.判断 excel 文件类型，如果是xls，使用 HSSFWorkbook；如果是 xlsx，使用 XSSFWorkbook
+            if (fileName.substring(fileName.indexOf("."), fileName.length()).equals(".xls")) {
+                wb = new HSSFWorkbook(inputStream);
+            } else {
+                wb = new XSSFWorkbook(inputStream);
+            }
+
+            // 3.读取页脚sheet
+            Sheet sheet = wb.getSheetAt(0);
+
+            // 4.循环读取行并替换内容
+            for (ExcelReplaceDataVO data : datas) {
+                //获取单元格内容
+                Row row = sheet.getRow(data.getRow());
+                Cell cell = row.getCell((short) data.getColumn());
+                cell.getStringCellValue();
+                String str = cell.getStringCellValue();
+
+                //替换单元格内容
+                str = str.replace(data.getKey(), data.getValue());
+
+                //写入单元格内容
+                cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+                //poi3.5已取消，交由Unicode处理  cell.setEncoding(HSSFCell.ENCODING_UTF_16); //设置编码
+                cell.setCellValue(str);
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            return wb;
         }
     }
 }
