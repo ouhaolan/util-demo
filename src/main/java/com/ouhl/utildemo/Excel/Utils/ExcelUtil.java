@@ -128,21 +128,22 @@ public class ExcelUtil {
             Sheet sheet = wb.getSheetAt(0);
 
             // 4.循环读取行并替换内容
-            for (ExcelReplaceDataVO data : datas) {
+            datas.forEach((item) -> {
                 //获取单元格内容
-                Row row = sheet.getRow(data.getRow());
-                Cell cell = row.getCell((short) data.getColumn());
+                Row row = sheet.getRow(item.getRow());
+                Cell cell = row.getCell((short) item.getColumn());
                 cell.getStringCellValue();
                 String str = cell.getStringCellValue();
 
                 //替换单元格内容
-                str = str.replace(data.getKey(), data.getValue());
+                str = str.replace(item.getKey(), item.getValue());
 
                 //写入单元格内容
                 cell.setCellType(HSSFCell.CELL_TYPE_STRING);
                 //poi3.5已取消，交由Unicode处理  cell.setEncoding(HSSFCell.ENCODING_UTF_16); //设置编码
                 cell.setCellValue(str);
-            }
+            });
+
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
