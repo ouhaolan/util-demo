@@ -103,7 +103,7 @@ public class ExcelUtil {
     }
 
     /**
-     * 功能描述：导入 Excel
+     * 功能描述：excel 上传模板、写入数据、导出报表
      *
      * @param file
      * @return
@@ -135,12 +135,14 @@ public class ExcelUtil {
                 cell.getStringCellValue();
                 String str = cell.getStringCellValue();
 
-                //替换单元格内容
+                //根据根据 key 替换 value
                 str = str.replace(item.getKey(), item.getValue());
 
                 //写入单元格内容
                 cell.setCellType(HSSFCell.CELL_TYPE_STRING);
                 //poi3.5已取消，交由Unicode处理  cell.setEncoding(HSSFCell.ENCODING_UTF_16); //设置编码
+
+                //把模板中的单元格文本替换掉
                 cell.setCellValue(str);
             });
 
