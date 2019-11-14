@@ -140,7 +140,8 @@ public class ExcelUtil {
 
                 //写入单元格内容
                 cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-                //poi3.5已取消，交由Unicode处理  cell.setEncoding(HSSFCell.ENCODING_UTF_16); //设置编码
+                // poi3.5 已取消，交由 Unicode 处理
+                // cell.setEncoding(HSSFCell.ENCODING_UTF_16); //设置编码
 
                 //把模板中的单元格文本替换掉
                 cell.setCellValue(str);
