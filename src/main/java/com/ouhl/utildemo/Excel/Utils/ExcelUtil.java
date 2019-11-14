@@ -110,21 +110,21 @@ public class ExcelUtil {
      */
     public static Workbook replaceModel(List<ExcelReplaceDataVO> datas, MultipartFile file) {
         // 1.创建workbook对象，读取整个文档
-        Workbook wb = null;                                 //excel 文件
+        Workbook wb = null;                                 //声明一个 excel 文件流
+        List<Object> rows = Collections.emptyList();
 
-        List<Object> rows = Collections.emptyList();        //读取的excel数据
         try {
-            String fileName = file.getOriginalFilename();                   //excel 名称
-            InputStream inputStream = file.getInputStream();    //excel 字节流
+            String fileName = file.getOriginalFilename();       //获取上传的 excel 名称
+            InputStream inputStream = file.getInputStream();    //获取上传的 excel 字节流
 
             // 2.判断 excel 文件类型，如果是xls，使用 HSSFWorkbook；如果是 xlsx，使用 XSSFWorkbook
             if (fileName.substring(fileName.indexOf("."), fileName.length()).equals(".xls")) {
-                wb = new HSSFWorkbook(inputStream);
+                wb = new HSSFWorkbook(inputStream);     //将上传的 excel 文件放入创建好的流里
             } else {
                 wb = new XSSFWorkbook(inputStream);
             }
 
-            // 3.读取页脚sheet
+            // 3.读取页脚 sheet 0 为第一页
             Sheet sheet = wb.getSheetAt(0);
 
             // 4.循环读取行并替换内容
