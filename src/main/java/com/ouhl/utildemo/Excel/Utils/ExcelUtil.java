@@ -118,7 +118,7 @@ public class ExcelUtil {
             InputStream inputStream = file.getInputStream();    //获取上传的 excel 字节流
 
             // 2.判断 excel 文件类型，如果是xls，使用 HSSFWorkbook；如果是 xlsx，使用 XSSFWorkbook
-            if (fileName.substring(fileName.indexOf("."), fileName.length()).equals(".xls")) {
+            if (fileName.substring(fileName.indexOf(".")).equals(".xls")) {
                 wb = new HSSFWorkbook(inputStream);     //将上传的 excel 文件放入创建好的流里
             } else {
                 wb = new XSSFWorkbook(inputStream);
