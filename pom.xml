@@ -135,6 +135,18 @@
             <artifactId>commons-email</artifactId>
             <version>1.4</version>
         </dependency>
+
+        <!-- ratelimit+aop自定义注解实现应用限流 需要依赖 AOP 包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>2.0.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
     </dependencies>
 
     <build>
